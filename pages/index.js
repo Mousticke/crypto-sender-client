@@ -1,4 +1,4 @@
-import { Navbar, Services, Welcome, Transactions } from "../components";
+import { Navbar, Welcome, Transactions } from "../components";
 import Footer from "../components/Footer";
 export default function Home() {
   return (
@@ -7,7 +7,6 @@ export default function Home() {
         <Navbar />
         <Welcome />
       </div>
-      <Services />
       <Transactions />
       <Footer />
     </div>

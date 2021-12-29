@@ -71,7 +71,7 @@ export const TransactionProvider = ({ infura_id, infura_secret, children }) => {
         amount: parseInt(transaction.amount._hex) / 10 ** 18,
       }));
       return {
-        transactions: structuredTransaction,
+        transactions: structuredTransaction.reverse(),
       };
     } catch (error) {
       return {
@@ -289,7 +289,7 @@ export const TransactionProvider = ({ infura_id, infura_secret, children }) => {
           keyword: keyword,
           amount: ethAmount,
         };
-        setTransactions((prevState) => [...prevState, structuredTransaction]);
+        setTransactions((prevState) => [structuredTransaction, ...prevState]);
         setStatusAccount(
           "🎉 Your transaction has been added to the blockchain from " +
             from +

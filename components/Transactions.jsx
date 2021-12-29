@@ -81,7 +81,7 @@ function Transactions() {
           </h3>
         )}
         <div className="flex flex-wrap justify-center items-center mt-10">
-          {transactions.reverse().map((transaction, i) => (
+          {transactions.map((transaction, i) => (
             <TransactionCard key={i} {...transaction} />
           ))}
         </div>
