@@ -1,5 +1,5 @@
 {
-  "name": "crypto-sender",
+  "name": "crypto-sender-client",
   "private": true,
   "scripts": {
     "dev": "next dev",
