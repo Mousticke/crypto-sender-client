@@ -14,9 +14,16 @@ function Navbar() {
   const { currentAccount, connectWallet } = useContext(TransactionContext);
 
   return (
-    <nav className="w-full flex md:justify-center justify-between items-center p-4">
-      <div className="md:flex-[0.5] flex-initial justify-center items-center">
-        <Image src={logo} alt="logo" className="w-32 cursor-pointer" />
+    <nav className="w-full flex justify-around items-center p-4">
+      <div className="relative max-w-[50px] md:flex-[0.5] flex-initial justify-center items-center">
+        <Image
+          src={logo}
+          alt="logo"
+          layout="responsive"
+          width={40}
+          height={40}
+          className="cursor-pointer"
+        />
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
         {currentAccount ? (
