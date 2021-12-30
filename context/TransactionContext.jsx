@@ -37,25 +37,23 @@ export const TransactionProvider = ({ infura_id, infura_secret, children }) => {
   const getAllTransactions = async () => {
     try {
       if (!window.ethereum) {
-        return {
-          transactions: [],
-          status: (
-            <span>
-              <p>
-                {" "}
-                🦊{" "}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={`https://metamask.io/download.html`}
-                >
-                  You must install Metamask, a virtual Ethereum wallet, in your
-                  browser.
-                </a>
-              </p>
-            </span>
-          ),
-        };
+        setTransactions([]);
+        setStatusAccount(
+          <span>
+            <p>
+              {" "}
+              🦊{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://metamask.io/download.html`}
+              >
+                You must install Metamask, a virtual Ethereum wallet, in your
+                browser.
+              </a>
+            </p>
+          </span>,
+        );
       }
 
       const instance = getEthereumContract();
@@ -155,8 +153,11 @@ export const TransactionProvider = ({ infura_id, infura_secret, children }) => {
         method: "eth_requestAccounts",
       });
 
-      setStatusAccount("👆🏽 You can now send a transaction."),
-        setCurrentAccount(addressArray[0]);
+      setStatusAccount("👆🏽 You can now send a transaction.");
+      setCurrentAccount(addressArray[0]);
+      const { transactions, status } = await getAllTransactions();
+      setTransactions(transactions);
+      if (status) setStatusAccount(status);
     } catch (error) {
       return {
         address: "",
@@ -320,7 +321,7 @@ export const TransactionProvider = ({ infura_id, infura_secret, children }) => {
 
     fetchWallet();
     addWalletListener();
-  }, []);
+  }, [currentAccount]);
 
   return (
     <TransactionContext.Provider
