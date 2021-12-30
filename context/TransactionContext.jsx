@@ -170,7 +170,7 @@ export const TransactionProvider = ({ infura_id, infura_secret, children }) => {
       window.ethereum.on("accountsChanged", (accounts) => {
         if (accounts.length > 0) {
           setCurrentAccount(accounts[0]);
-          setStatusAccount("👆🏽 Write a message in the text-field above.");
+          setStatusAccount("👆🏽 You can now send a transaction.");
         } else {
           setCurrentAccount("");
           setStatusAccount(
